@@ -1,0 +1,96 @@
+1. Estilização
+CSS: Adicione estilos ao seu CSS para melhorar a apresentação. Por exemplo, você pode centralizar o texto, adicionar margens e definir uma fonte mais agradável.
+css
+Copiar código
+/* frases.component.css */
+div {
+  text-align: center;
+  margin: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+blockquote {
+  font-size: 20px;
+  font-style: italic;
+  margin: 20px 0;
+  padding: 10px;
+  border-left: 4px solid #ccc;
+  color: #555;
+}
+2. Transições e Efeitos
+Transições: Considere adicionar uma transição suave quando a frase é carregada. Isso pode ser feito com uma simples classe CSS que altera a opacidade.
+css
+Copiar código
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-in.active {
+  opacity: 1;
+}
+JavaScript: Adicione a classe ao elemento que contém a frase.
+typescript
+Copiar código
+import { Component, ElementRef, ViewChild } from '@angular/core';
+
+@Component({
+  // ... (restante do código)
+})
+export class FrasesComponent {
+  @ViewChild('fraseContainer') fraseContainer!: ElementRef;
+  fraseHtml: string = '';
+
+  gerarFraseDoDia(): void {
+    this.frasesService.obterFraseDoDia().subscribe({
+      next: (data: Frase[]): void => {
+        this.fraseHtml = data[0].h;
+
+        // Adiciona a classe de fade-in
+        this.fraseContainer.nativeElement.classList.remove('active');
+        setTimeout(() => {
+          this.fraseContainer.nativeElement.classList.add('active');
+        }, 10);
+      },
+      error: (error: any): void => {
+        console.error('Erro ao obter a frase do dia:', error);
+      }
+    });
+  }
+}
+3. Responsividade
+Media Queries: Certifique-se de que o layout seja responsivo para dispositivos móveis. Ajuste tamanhos de fonte e espaçamentos para telas menores.
+css
+Copiar código
+@media (max-width: 600px) {
+  button {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  blockquote {
+    font-size: 18px;
+  }
+}
+4. Acessibilidade
+Acessibilidade: Adicione atributos aria e use tags HTML apropriadas para melhorar a acessibilidade da aplicação. Por exemplo, use <blockquote> para a frase e inclua um botão com um texto claro.
+5. Feedback ao Usuário
+Loader: Considere adicionar um indicador de carregamento (loader) enquanto a frase está sendo buscada, para melhorar a experiência do usuário.
+html
+Copiar código
+<div *ngIf="loading">Carregando...</div>
+<div *ngIf="fraseHtml" [innerHTML]="fraseHtml" #fraseContainer class="fade-in"></div>
+6. Validação de Erros
+Mensagem de Erro: Exiba uma mensagem de erro mais amigável se a API falhar, em vez de apenas logar no console.
+typescript
+Copiar código
+error: (error: any): void => {
+  this.fraseHtml = ''; // Limpa a frase anterior
+  console.error('Erro ao obter a frase do dia:', error);
+  alert('Não conseguimos obter a frase do dia. Tente novamente mais tarde.');
+}
