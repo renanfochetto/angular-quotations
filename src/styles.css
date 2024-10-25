@@ -10,6 +10,9 @@
 body {
   margin: 0;
   padding: 0;
-  background: #FAF0E4;
+  height: 100vh;
   font-family: 'Bison', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -2,21 +2,20 @@
   font-size:0.8rem;
   font-family: 'Open Sans', sans-serif;
   background-color: rgba(0, 0, 0, 0);
-  color: black;
+  color: white;
   padding: 0.5rem 1rem;
-  border: 1px solid black;
+  border: 1px solid white;
   position: relative;
   outline: 0;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-
 }
 
 .button:after {
   content: "";
-  background-color: #FF8551;
+  background-color: black;
   width: 100%;
   z-index: -1;
   position: absolute;

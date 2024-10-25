@@ -94,3 +94,23 @@ error: (error: any): void => {
   console.error('Erro ao obter a frase do dia:', error);
   alert('Não conseguimos obter a frase do dia. Tente novamente mais tarde.');
 }
+
+
+Funcionalidades
+Tradução de frases: Você já implementou, mas pode adicionar a opção de selecionar diferentes idiomas.
+Compartilhamento de frases: Adicione botões para compartilhar a frase do dia nas redes sociais.
+Responsividade
+Media Queries: Use media queries no CSS para garantir que o layout se adapte a diferentes tamanhos de tela.
+Flexbox/Grid: Continue utilizando Flexbox ou CSS Grid para criar layouts fluidos.
+Animações
+Transições Suaves: Adicione transições nas mudanças de estado, como hover nos botões ou ao carregar uma nova frase.
+Animações de Entrada: Considere usar animações ao carregar a frase ou ao mudar o fundo.
+Acessibilidade
+Labels e ARIA: Adicione labels e atributos ARIA aos elementos interativos para garantir que sejam acessíveis a leitores de tela.
+Teclado: Certifique-se de que todos os elementos interativos possam ser acessados via teclado.
+Tratamento de Erros
+Exibir Mensagens: Mostre mensagens de erro amigáveis caso a API falhe ou não retorne dados.
+Fallback: Implemente um fallback para quando a API de tradução não estiver disponível.
+Testes
+Testes Unitários: Considere escrever testes unitários para os serviços e componentes principais.
+Teste de Acessibilidade: Use ferramentas como o Axe ou Lighthouse para verificar a acessibilidade do seu site.
