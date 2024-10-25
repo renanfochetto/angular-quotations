@@ -1,6 +1,9 @@
 <div class="container">
-  <div *ngIf="fraseDoDia" class="frase">"{{ fraseDoDia }}"</div>
-  <div *ngIf="!fraseDoDia" class="titulo">Que tal uma frase motivacional para inspirar seu dia?</div>
-  <div *ngIf="autor" class="autor">{{ autor }}</div>
+  <div *ngIf="!fraseDoDia" class="titulo">Que tal uma frase para o dia de hoje?</div>
+  <div *ngIf="isLoading" class="loading">
+    <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+  </div>
+  <div *ngIf="fraseTraduzida" class="frase">"{{ fraseTraduzida }}"</div>
+  <div *ngIf="fraseTraduzida" class="autor">{{ autor }}</div>
   <app-botao (gerarFrase)="gerarFraseDoDia()" class="botao"></app-botao>
 </div>

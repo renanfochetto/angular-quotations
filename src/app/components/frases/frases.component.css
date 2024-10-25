@@ -9,7 +9,7 @@
 
 .frase, .titulo {
   text-align: center;
-  width: 85%;
+  width: 90%;
   font-size: 3rem;
   color: #FF8551;
 }
@@ -18,12 +18,21 @@
   font-size: 1.3rem;
   font-style: italic;
   text-decoration: underline;
-  width: 55%;
+  width: 65%;
   text-align: right;
   color: #af9bb4;
   margin-top: 2rem;
+  letter-spacing: 0.1rem;
 }
 
 .botao {
   margin-top: 3rem;
 }
+
+.loading {
+  text-align: center;
+  color: #af9bb4;
+  margin: 20px 0;
+  font-size: 2rem;
+}
+
