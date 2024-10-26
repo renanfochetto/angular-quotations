@@ -9,6 +9,16 @@ import { Traducao } from "../interfaces/traducao.interface";
 export class TraducaoService {
 
   private apiUrl: string = 'https://api.mymemory.translated.net/get';
+  private traducoes: { [chave: string]: { [chave: string]: string} } = {
+    pt: {
+      titulo: 'Que tal uma citação para o dia de hoje?',
+      botaoGerar: 'Gerar citação'
+    },
+    en: {
+      titulo: 'How about a quote for today?',
+      botaoGerar: 'Generate Quote'
+    }
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -16,4 +26,8 @@ export class TraducaoService {
     const url = `${this.apiUrl}?q=${encodeURIComponent(texto)}&langpair=${idiomaOriginal}|${idiomaFinal}`
     return this.http.get<Traducao>(url);
     };
+
+  getTraducao(idioma: string, chave: string): string {
+    return this.traducoes[idioma]?.[chave] || chave;
+  }
 }

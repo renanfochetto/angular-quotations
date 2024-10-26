@@ -1,11 +1,24 @@
-<div class="container">
+<header class="header">
+  <h4 class="logo">Visual Quotes</h4>
+  <div class="seletor-container">
+    <span class="lang-option" [class.active]="idiomaSelecionado === 'pt'">PT</span>
+    <label class="toggle-button">
+      <input type="checkbox" (change)="atualizarIdioma()" [checked]="idiomaSelecionado === 'en'">
+      <span class="slider"></span>
+    </label>
+    <span class="lang-option" [class.active]="idiomaSelecionado === 'en'">EN</span>
+  </div>
+</header>
+
+
+<section class="container">
   <div class="frase-container">
-    <div *ngIf="!fraseDoDia" class="titulo">Que tal uma citação para o dia de hoje?</div>
+    <div *ngIf="!isLoading && !fraseTraduzida" class="titulo">{{ titulo }}</div>
     <div *ngIf="isLoading" class="loading">
       <i class="fa-solid fa-spinner fa-spin-pulse"></i>
     </div>
-    <div *ngIf="fraseTraduzida" class="frase">"{{ fraseTraduzida }}"</div>
-    <div *ngIf="fraseTraduzida" class="autor">{{ autor }}</div>
+    <div *ngIf="fraseTraduzida && !isLoading" class="frase">"{{ fraseTraduzida }}"</div>
+    <div *ngIf="fraseTraduzida && !isLoading" class="autor">{{ autor }}</div>
   </div>
-  <app-botao (gerarFrase)="gerarFraseDoDia()" class="botao"></app-botao>
-</div>
+  <button (click)="gerarFraseDoDia()" class="button" role="button">{{ botaoTexto }}</button>
+</section>
