@@ -25,6 +25,8 @@ export class FrasesComponent {
   isLoading: boolean = false;
   titulo: string = 'Que tal uma citação para o dia de hoje?';
   botaoTexto: string = 'Gerar Citação';
+  isLiked: boolean = false;
+  copiado: boolean = false;
 
   constructor(
     private frasesService: FrasesService,
@@ -47,6 +49,27 @@ export class FrasesComponent {
       error: (error: any): void => {
         console.error('Não conseguimos obter a frase do dia. Que tal tentar novamente mais tarde?', error);
       }
+    });
+  }
+
+  toggleLike() {
+    this.isLiked = !this.isLiked; // Alterna entre curtido e não curtido
+  }
+
+  share() {
+    console.log('Compartilhar'); // Adicione a lógica de compartilhamento aqui, se desejar
+  }
+
+  copiarFrase() {
+    const frase = this.fraseTraduzida;
+
+    navigator.clipboard.writeText(frase).then(() => {
+      this.copiado = true;
+      setTimeout(() => {
+        this.copiado = false;
+      }, 500);
+    }).catch(err => {
+      console.error('Erro ao copiar a frase: ', err);
     });
   }
 

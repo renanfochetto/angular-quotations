@@ -2,13 +2,13 @@
   display: flex;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.3);
-  padding: 0 10rem;
+  padding: 0 5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .logo {
   font-family: 'Bison', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: black;
   margin: 1rem 0;
   text-shadow:
@@ -27,17 +27,17 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin: 0 10px; /* Espaçamento entre os rótulos e o toggle */
+  margin: 0 10px;
 }
 
 .toggle-button input {
-  display: none; /* Esconde o checkbox */
+  display: none;
 }
 
 .slider {
   width: 2rem;
   height: 1rem;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   position: relative;
   transition: background 0.3s;
 }
@@ -54,7 +54,6 @@
   font-weight: bold;
   text-decoration: underline;
 }
-
 
 .slider:before {
   content: '';
@@ -80,6 +79,23 @@
   overflow: hidden;
 }
 
+.container-botoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 70%;
+  margin-top: 2rem;
+}
+
+.botoes {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
 .frase-container {
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
@@ -90,7 +106,7 @@
   width: 80vw;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 7rem;
+  margin-top: 6rem;
 }
 
 .frase, .titulo {
@@ -112,7 +128,6 @@
   width: 75%;
   text-align: right;
   color: black;
-  margin-top: 2rem;
   letter-spacing: 0.1rem;
 }
 
@@ -133,11 +148,32 @@
   cursor: pointer;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  margin-top: 6rem;
-  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Adicione uma transição suave */
+  margin-top: 4rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .button:active {
-  transform: translateY(2px); /* Move o botão para baixo */
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 3px 5px -2px; /* Diminui a sombra */
+  transform: translateY(2px);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 3px 5px -2px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+  margin-top: 5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0.3rem 5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
+}
+
+.logo-footer {
+  height: 2rem;
+}
+
+.fa-github {
+  color: black;
+  font-size: 2rem;
+  cursor: pointer;
 }

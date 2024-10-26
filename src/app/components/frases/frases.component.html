@@ -18,7 +18,20 @@
       <i class="fa-solid fa-spinner fa-spin-pulse"></i>
     </div>
     <div *ngIf="fraseTraduzida && !isLoading" class="frase">"{{ fraseTraduzida }}"</div>
-    <div *ngIf="fraseTraduzida && !isLoading" class="autor">{{ autor }}</div>
+    <div *ngIf="fraseTraduzida && !isLoading" class="container-botoes">
+      <div class="botoes">
+        <i class="fa-solid fa-heart" *ngIf="isLiked" (click)="toggleLike()"></i>
+        <i class="fa-regular fa-heart" *ngIf="!isLiked" (click)="toggleLike()"></i>
+        <i class="fa-solid fa-copy" *ngIf="!copiado" (click)="copiarFrase()" ></i>
+        <i class="fa-solid fa-check" *ngIf="copiado"></i>
+        <i class="fa-solid fa-share" (click)="share()"></i>
+      </div>
+      <div class="autor">{{ autor }}</div>
+    </div>
   </div>
   <button (click)="gerarFraseDoDia()" class="button" role="button">{{ botaoTexto }}</button>
 </section>
+<footer class="footer">
+  <a href="https://github.com/renanfochetto" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+  <img src="/assets/logo.png" alt="Logo" class="logo-footer">
+</footer>
