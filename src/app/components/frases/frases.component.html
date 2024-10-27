@@ -1,4 +1,5 @@
-<header class="header">
+<div class="main-container">
+  <header class="header">
   <h4 class="logo">Visual Quotes</h4>
   <div class="seletor-container">
     <span class="lang-option" [class.active]="idiomaSelecionado === 'pt'">PT</span>
@@ -9,9 +10,7 @@
     <span class="lang-option" [class.active]="idiomaSelecionado === 'en'">EN</span>
   </div>
 </header>
-
-
-<section class="container">
+  <section class="container">
   <div class="frase-container">
     <div *ngIf="!isLoading && !fraseTraduzida" class="titulo">{{ titulo }}</div>
     <div *ngIf="isLoading" class="loading">
@@ -31,7 +30,8 @@
   </div>
   <button (click)="gerarFraseDoDia()" class="button" role="button">{{ botaoTexto }}</button>
 </section>
-<footer class="footer">
-  <a href="https://github.com/renanfochetto" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+  <footer class="footer">
   <img src="/assets/logo.png" alt="Logo" class="logo-footer">
+  <a href="https://github.com/renanfochetto" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
 </footer>
+</div>

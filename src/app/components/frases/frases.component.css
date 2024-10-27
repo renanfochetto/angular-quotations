@@ -1,3 +1,9 @@
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -10,7 +16,7 @@
   font-family: 'Bison', sans-serif;
   font-size: 1.3rem;
   color: black;
-  margin: 1rem 0;
+  margin: 0.7rem 0;
   text-shadow:
     -1px -1px 0px #ffffff,
     1px -1px 0px #ffffff,
@@ -42,15 +48,22 @@
   transition: background 0.3s;
 }
 
+
 .lang-option {
   font-family: 'Open Sans', sans-serif;
   font-size: 0.7rem;
   color: black;
   margin: 0 5px;
+  text-shadow:
+    -1px -1px 0px #ffffff,
+    1px -1px 0px #ffffff,
+    -1px 1px 0px #ffffff,
+    1px 1px 0px #ffffff;
+
 }
 
 .lang-option.active {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
   text-decoration: underline;
 }
@@ -74,9 +87,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100vw;
-  overflow: hidden;
+  margin-top: auto;
 }
 
 .container-botoes {
@@ -102,11 +113,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 40vh;
   width: 80vw;
-  position: relative;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 6rem;
+  margin-bottom: 4rem;
+  padding: 3rem 1rem;
 }
 
 .frase, .titulo {
@@ -148,7 +158,6 @@
   cursor: pointer;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  margin-top: 4rem;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
@@ -159,21 +168,58 @@
 
 footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 3.5rem;
-  margin-top: 5rem;
+  gap: 1rem;
   background-color: rgba(255, 255, 255, 0.3);
-  padding: 0.3rem 5rem;
+  padding: 0.2rem 5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
+  margin-top: auto;
 }
 
 .logo-footer {
-  height: 2rem;
+  height: 1.6rem;
+  margin: 0.6rem 0;
 }
 
 .fa-github {
   color: black;
-  font-size: 2rem;
+  font-size: 1.6rem;
   cursor: pointer;
+}
+
+@media (max-width: 480px) {
+
+  .header {
+    padding: 0 1.5rem;
+  }
+
+  .lang-option {
+    margin: 0 1px;
+  }
+
+  .frase, .titulo {
+    font-size: 1.8rem;
+  }
+
+  .autor {
+    font-size: 0.9rem;
+  }
+
+  .container-botoes {
+    width: 85%;
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  .logo-footer {
+    height: 1.4rem;
+  }
+
+  .fa-github {
+    font-size: 1.4rem;
+  }
+
 }
