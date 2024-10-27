@@ -7,10 +7,22 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.35);
   padding: 0 5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
 
 .logo {
   font-family: 'Bison', sans-serif;
@@ -54,18 +66,17 @@
   font-size: 0.7rem;
   color: black;
   margin: 0 5px;
+}
+
+.lang-option.active {
+  font-size: 0.9rem;
+  font-weight: bold;
   text-shadow:
     -1px -1px 0px #ffffff,
     1px -1px 0px #ffffff,
     -1px 1px 0px #ffffff,
     1px 1px 0px #ffffff;
 
-}
-
-.lang-option.active {
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 .slider:before {
@@ -108,7 +119,7 @@
 }
 
 .frase-container {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,7 +182,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.35);
   padding: 0.2rem 5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
   margin-top: auto;
@@ -185,6 +196,13 @@ footer {
 .fa-github {
   color: black;
   font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.botoes button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
