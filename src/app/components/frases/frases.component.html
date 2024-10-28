@@ -3,9 +3,7 @@
   <section class="container" role="main">
     <div class="frase-container" aria-live="polite">
       <div *ngIf="!isLoading && !fraseTraduzida" id="titulo" class="titulo fade-in" aria-labelledby="titulo">{{ titulo }}</div>
-      <div *ngIf="isLoading" class="loading" role="status" aria-live="assertive">
-        <i class="fa-solid fa-spinner fa-spin-pulse" aria-hidden="true"></i>
-      </div>
+      <app-loading *ngIf="isLoading"></app-loading>
       <div *ngIf="fraseTraduzida && !isLoading" class="frase fade-in" aria-describedby="autor">"{{ fraseTraduzida }}"</div>
       <div *ngIf="fraseTraduzida && !isLoading" class="container-botoes">
         <app-botoes-interacao [curtido]="foiCurtido" [copiado]="copiado" [fraseTraduzida]="fraseTraduzida"></app-botoes-interacao>

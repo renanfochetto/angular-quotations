@@ -13,7 +13,7 @@ import { FrasesComponent } from "./components/frases/frases.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title: string = 'angular-quotations';
+  title: string = 'Visual Quotes';
 
   constructor(private fotoService: FotoService) {}
 

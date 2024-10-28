@@ -23,13 +23,6 @@
   padding: 3rem 1rem;
 }
 
-.loading {
-  text-align: center;
-  color: black;
-  margin: 20px 0;
-  font-size: 2rem;
-}
-
 .frase, .titulo {
   text-align: center;
   width: 70vw;

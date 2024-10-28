@@ -4,8 +4,10 @@ import { FormsModule } from "@angular/forms";
 import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { BotoesInteracaoComponent } from "../botoes-interacao/botoes-interacao.component";
+import { LoadingComponent } from "../loading/loading.component";
 import { FrasesService } from "../../services/frases.service";
 import { TraducaoService } from "../../services/traducao.service";
+import { AnimationService } from "../../services/animacoes.service";
 import { Frase } from "../../interfaces/frases.interface";
 import { Traducao } from "../../interfaces/traducao.interface";
 
@@ -17,7 +19,8 @@ import { Traducao } from "../../interfaces/traducao.interface";
     FormsModule,
     HeaderComponent,
     FooterComponent,
-    BotoesInteracaoComponent
+    BotoesInteracaoComponent,
+    LoadingComponent
   ],
   templateUrl: './frases.component.html',
   styleUrl: './frases.component.css'
@@ -36,7 +39,8 @@ export class FrasesComponent {
 
   constructor(
     private frasesService: FrasesService,
-    private traducaoService: TraducaoService
+    private traducaoService: TraducaoService,
+    private animacaoService: AnimationService
   ) { }
 
   atualizarIdioma(novoIdioma: string): void {
@@ -50,6 +54,7 @@ export class FrasesComponent {
       next: (data: Frase[]): void => {
         this.fraseDoDia = data[0].q;
         this.autor = data[0].a;
+        this.aplicarFadeIn()
         this.traduzirFrase(this.fraseDoDia);
       },
       error: (error: any): void => {
@@ -63,14 +68,11 @@ export class FrasesComponent {
     if(this.idiomaSelecionado === 'en') {
       this.fraseTraduzida = texto;
       this.isLoading = false
-      this.aplicarFadeIn();
     } else {
-      this.isLoading = true;
       this.traducaoService.translate(texto,'en', 'pt').subscribe({
         next: (data: Traducao): void => {
           this.fraseTraduzida = data.responseData.translatedText;
           this.isLoading = false;
-          this.aplicarFadeIn();
       },
         error: (error: any): void => {
           console.error('Não conseguimos traduzir a frase. Que tal tentar novamente mais tarde?', error);
@@ -82,12 +84,6 @@ export class FrasesComponent {
 
   aplicarFadeIn(): void {
     const fraseElement = document.querySelector('.frase') as HTMLElement;
-    if (fraseElement) {
-      fraseElement.classList.remove('fade-in');
-      fraseElement.offsetWidth;
-      requestAnimationFrame((): void => {
-        fraseElement.classList.add('fade-in');
-      });
-    }
+    this.animacaoService.aplicarFadeIn(fraseElement);
   }
 }

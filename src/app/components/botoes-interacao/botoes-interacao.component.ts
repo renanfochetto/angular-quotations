@@ -22,8 +22,8 @@ export class BotoesInteracaoComponent {
     this.curtir.emit();
   }
 
-  copiarFrase(): void {
-      navigator.clipboard.writeText(this.fraseTraduzida).then(() => {
+  copiarFrase(): Promise<void> {
+      return navigator.clipboard.writeText(this.fraseTraduzida).then(() => {
         this.copiado = true;
         setTimeout((): void => {
           this.copiado = false;
