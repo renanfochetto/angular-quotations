@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FotoService } from "./services/foto.service";
 import { FrasesComponent } from "./components/frases/frases.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -1,42 +1,48 @@
-import { Component, Input } from '@angular/core';
-import { FrasesService } from "../../services/frases.service";
-import { Frase } from "../../interfaces/frases.interface";
-import { TraducaoService } from "../../services/traducao.service";
-import { Traducao } from "../../interfaces/traducao.interface";
+import { Component } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { HeaderComponent } from "../header/header.component";
+import { FooterComponent } from "../footer/footer.component";
+import { BotoesInteracaoComponent } from "../botoes-interacao/botoes-interacao.component";
+import { FrasesService } from "../../services/frases.service";
+import { TraducaoService } from "../../services/traducao.service";
+import { Frase } from "../../interfaces/frases.interface";
+import { Traducao } from "../../interfaces/traducao.interface";
 
 @Component({
   selector: 'app-frases',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HeaderComponent,
+    FooterComponent,
+    BotoesInteracaoComponent
   ],
   templateUrl: './frases.component.html',
   styleUrl: './frases.component.css'
 })
 
 export class FrasesComponent {
-  @Input() idiomaSelecionado: string = 'pt';
+  idiomaSelecionado: string = 'pt';
   fraseDoDia: string = '';
   autor: string = '';
   fraseTraduzida: string = '';
   isLoading: boolean = false;
+  foiCurtido: boolean = false;
+  copiado: boolean = false;
   titulo: string = 'Que tal uma citação para o dia de hoje?';
   botaoTexto: string = 'Gerar Citação';
-  isLiked: boolean = false;
-  copiado: boolean = false;
 
   constructor(
     private frasesService: FrasesService,
     private traducaoService: TraducaoService
   ) { }
 
-  atualizarIdioma(): void {
-    this.idiomaSelecionado = this.idiomaSelecionado === 'pt' ? 'en' : 'pt';
-    this.titulo = this.idiomaSelecionado === 'pt' ? 'Que tal uma citação para o dia de hoje?' : 'How about a quote for today?';
-    this.botaoTexto = this.idiomaSelecionado === 'pt' ? 'Gerar Citação' : 'Generate Quote';
+  atualizarIdioma(novoIdioma: string): void {
+    this.idiomaSelecionado = novoIdioma;
+    this.titulo = novoIdioma === 'pt' ? 'Que tal uma citação para o dia de hoje?' : 'How about a quote for today?';
+    this.botaoTexto = novoIdioma === 'pt' ? 'Gerar Citação' : 'Generate Quote';
   }
 
   gerarFraseDoDia(): void {
@@ -52,42 +58,36 @@ export class FrasesComponent {
     });
   }
 
-  toggleLike() {
-    this.isLiked = !this.isLiked; // Alterna entre curtido e não curtido
-  }
-
-  share() {
-    console.log('Compartilhar'); // Adicione a lógica de compartilhamento aqui, se desejar
-  }
-
-  copiarFrase() {
-    const frase = this.fraseTraduzida;
-
-    navigator.clipboard.writeText(frase).then(() => {
-      this.copiado = true;
-      setTimeout(() => {
-        this.copiado = false;
-      }, 500);
-    }).catch(err => {
-      console.error('Erro ao copiar a frase: ', err);
-    });
-  }
-
   traduzirFrase(texto: string): void {
+    this.isLoading = true
     if(this.idiomaSelecionado === 'en') {
       this.fraseTraduzida = texto;
+      this.isLoading = false
+      this.aplicarFadeIn();
     } else {
       this.isLoading = true;
       this.traducaoService.translate(texto,'en', 'pt').subscribe({
         next: (data: Traducao): void => {
           this.fraseTraduzida = data.responseData.translatedText;
           this.isLoading = false;
+          this.aplicarFadeIn();
       },
         error: (error: any): void => {
           console.error('Não conseguimos traduzir a frase. Que tal tentar novamente mais tarde?', error);
           this.isLoading = false;
       }
     });
+    }
+  }
+
+  aplicarFadeIn(): void {
+    const fraseElement = document.querySelector('.frase') as HTMLElement;
+    if (fraseElement) {
+      fraseElement.classList.remove('fade-in');
+      fraseElement.offsetWidth;
+      requestAnimationFrame((): void => {
+        fraseElement.classList.add('fade-in');
+      });
     }
   }
 }

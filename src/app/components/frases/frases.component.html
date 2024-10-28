@@ -1,46 +1,18 @@
 <div class="main-container">
-  <header class="header" role="banner">
-    <h1 class="logo" aria-label="Logo do Visual Quotes">Visual Quotes</h1>
-    <div class="seletor-container" role="group" aria-label="Selecionar Idioma">
-      <span class="lang-option" [class.active]="idiomaSelecionado === 'pt'">PT</span>
-      <label class="toggle-button" for="idioma-toggle">
-        <input id="idioma-toggle" type="checkbox" (change)="atualizarIdioma()" [checked]="idiomaSelecionado === 'en'">
-        <span class="slider"></span>
-        <span class="visually-hidden">Alterar idioma</span>
-      </label>
-      <span class="lang-option" [class.active]="idiomaSelecionado === 'en'">EN</span>
-    </div>
-  </header>
+  <app-header (idiomaMudou)="atualizarIdioma($event)"></app-header>
   <section class="container" role="main">
     <div class="frase-container" aria-live="polite">
-      <div *ngIf="!isLoading && !fraseTraduzida" id="titulo" class="titulo" aria-labelledby="titulo">{{ titulo }}</div>
+      <div *ngIf="!isLoading && !fraseTraduzida" id="titulo" class="titulo fade-in" aria-labelledby="titulo">{{ titulo }}</div>
       <div *ngIf="isLoading" class="loading" role="status" aria-live="assertive">
         <i class="fa-solid fa-spinner fa-spin-pulse" aria-hidden="true"></i>
       </div>
-      <div *ngIf="fraseTraduzida && !isLoading" class="frase" aria-describedby="autor">"{{ fraseTraduzida }}"</div>
+      <div *ngIf="fraseTraduzida && !isLoading" class="frase fade-in" aria-describedby="autor">"{{ fraseTraduzida }}"</div>
       <div *ngIf="fraseTraduzida && !isLoading" class="container-botoes">
-        <div class="botoes" role="toolbar" aria-label="Ações">
-          <button aria-label="Curtir" (click)="toggleLike()">
-            <i class="fa-solid fa-heart" *ngIf="isLiked" aria-hidden="true"></i>
-            <i class="fa-regular fa-heart" *ngIf="!isLiked" aria-hidden="true"></i>
-          </button>
-          <button aria-label="Copiar Frase" (click)="copiarFrase()">
-            <i class="fa-solid fa-copy" *ngIf="!copiado" aria-hidden="true"></i>
-            <i class="fa-solid fa-check" *ngIf="copiado" aria-hidden="true"></i>
-          </button>
-          <button aria-label="Compartilhar" (click)="share()">
-            <i class="fa-solid fa-share" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div class="autor" id="autor">{{ autor }}</div>
+        <app-botoes-interacao [curtido]="foiCurtido" [copiado]="copiado" [fraseTraduzida]="fraseTraduzida"></app-botoes-interacao>
+        <div class="autor fade-in" id="autor">{{ autor }}</div>
       </div>
     </div>
-    <button (click)="gerarFraseDoDia()" class="button" role="button" aria-label="Gerar frase do dia">{{ botaoTexto }}</button>
+    <button (click)="gerarFraseDoDia()" class="botao-frase" role="button" aria-label="Gerar frase do dia">{{ botaoTexto }}</button>
   </section>
-  <footer class="footer" role="contentinfo">
-    <img src="/assets/logo.png" alt="Logo da RNN" class="logo-footer">
-    <a href="https://github.com/renanfochetto" target="_blank" rel="noopener noreferrer" aria-label="Perfil do Github de Renan Fochetto">
-      <i class="fa-brands fa-github" aria-hidden="true"></i>
-    </a>
-  </footer>
+  <app-footer></app-footer>
 </div>
