@@ -2,7 +2,7 @@
 
 "Cada dia é uma nova página da sua história. O que você vai escrever hoje?"
 
-Bem-vindo ao **Frases & Fotos**, um lugar onde a inspiração encontra a beleza!
+Bem-vindo ao **Visual Quotes**, um lugar onde a inspiração encontra a beleza!
 
 Este aplicativo combina frases motivacionais com imagens incríveis para iluminar o seu dia.
 

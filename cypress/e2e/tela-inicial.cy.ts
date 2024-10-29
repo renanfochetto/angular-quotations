@@ -3,6 +3,11 @@ describe('Teste E2E para a Tela Inicial', () => {
     cy.visit('http://localhost:4200');
   });
 
+  it('Deve redirecionar para a página inicial ao clicar na logo', () => {
+    cy.get('.logo a').click();
+    cy.url().should('eq', 'http://localhost:4200/');
+  })
+
   it('Deve carregar a frase do dia', () => {
     cy.visit('http://localhost:4200');
     cy.get('#titulo').should('be.visible').contains('Que tal uma citação para o dia de hoje?');

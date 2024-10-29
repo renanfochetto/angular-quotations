@@ -9,9 +9,19 @@
 .logo {
   font-family: 'Bison', sans-serif;
   font-size: 1.3rem;
-  color: black;
   margin: 0.7rem 0;
   text-shadow: -1px -1px 0px #ffffff, 1px -1px 0px #ffffff, -1px 1px 0px #ffffff, 1px 1px 0px #ffffff;
+}
+
+.logo a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.2s ease;
+}
+
+.logo a:active,
+.logo a:focus {
+  color: white;
 }
 
 .visually-hidden {

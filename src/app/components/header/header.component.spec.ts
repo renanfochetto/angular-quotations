@@ -28,6 +28,15 @@ describe('HeaderComponent', () => {
     expect(h1.textContent).toBe('Visual Quotes');
   })
 
+  it('deve redirecionar para a página inicial ao clicar no logo', (): void => {
+    const link: HTMLAnchorElement = fixture.debugElement.query(By.css('.logo a')).nativeElement;
+
+    link.click();
+    fixture.detectChanges();
+
+    expect(link.getAttribute('href')).toBe('/');
+  });
+
   it('deve emitir um evento ao mudar de idioma', (): void => {
     const emitSpy = jest.spyOn(component.idiomaMudou, 'emit');
     const checkbox: DebugElement = fixture.debugElement.query(By.css('input[type="checkbox"]'));
@@ -35,7 +44,7 @@ describe('HeaderComponent', () => {
     checkbox.nativeElement.click();
     fixture.detectChanges();
 
-    expect(emitSpy.emit).toHaveBeenCalledWith('en');
+    expect(emitSpy).toHaveBeenCalledWith('en');
 
     expect(component.idiomaSelecionado).toBe('en');
 
