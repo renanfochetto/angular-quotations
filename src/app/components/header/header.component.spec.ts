@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HeaderComponent } from './header.component';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from "@angular/core";
+import { By } from '@angular/platform-browser';
+import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -23,7 +23,7 @@ describe('HeaderComponent', () => {
   });
 
   it('deve renderizar o elemento logo como um elemento h1', (): void => {
-    const h1: any = fixture.debugElement.query(By.css('.logo')).nativeElement;
+    const h1: HTMLElement = fixture.debugElement.query(By.css('.logo')).nativeElement;
     expect(h1).toBeTruthy();
     expect(h1.textContent).toBe('Visual Quotes');
   })
@@ -31,10 +31,11 @@ describe('HeaderComponent', () => {
   it('deve emitir um evento ao mudar de idioma', (): void => {
     const emitSpy = jest.spyOn(component.idiomaMudou, 'emit');
     const checkbox: DebugElement = fixture.debugElement.query(By.css('input[type="checkbox"]'));
+
     checkbox.nativeElement.click();
     fixture.detectChanges();
 
-    expect(component.idiomaMudou.emit).toHaveBeenCalledWith('en');
+    expect(emitSpy.emit).toHaveBeenCalledWith('en');
 
     expect(component.idiomaSelecionado).toBe('en');
 
@@ -47,6 +48,7 @@ describe('HeaderComponent', () => {
 
   it('deve mostrar a opção de idioma correta como ativa', (): void => {
     let activeOption = fixture.debugElement.query(By.css('.lang-option.active'));
+
     expect(activeOption).toBeTruthy();
     expect(activeOption.nativeElement.textContent.trim()).toBe('PT');
 
@@ -61,6 +63,7 @@ describe('HeaderComponent', () => {
 
   it('deve ter o aria-label correto no logo', () => {
     const logo: HTMLElement = fixture.debugElement.query(By.css('.logo')).nativeElement;
+
     expect(logo.getAttribute('aria-label')).toBe('Logo do Visual Quotes');
   });
 
@@ -71,6 +74,7 @@ describe('HeaderComponent', () => {
 
   it('deve ter o checkbox correto baseado no idioma selecionado', () => {
     const checkbox: DebugElement = fixture.debugElement.query(By.css('input[type="checkbox"]'));
+
     expect(checkbox.nativeElement.checked).toBe(component.idiomaSelecionado === 'en');
   });
 
@@ -92,7 +96,7 @@ describe('HeaderComponent', () => {
     component.idiomaSelecionado = 'en';
     fixture.detectChanges();
 
-    let activeOption = fixture.debugElement.query(By.css('.lang-option.active'));
+    const activeOption = fixture.debugElement.query(By.css('.lang-option.active'));
     expect(activeOption.nativeElement.textContent.trim()).toBe('EN');
 
     component.atualizarIdioma();

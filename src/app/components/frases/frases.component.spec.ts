@@ -1,22 +1,32 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { FrasesComponent } from './frases.component';
-import { FrasesService } from "../../services/frases.service";
-import { TraducaoService } from "../../services/traducao.service";
-import { AnimationService } from "../../services/animacoes.service";
+import { FrasesService } from "../../services/frases/frases.service";
+import { TraducaoService } from "../../services/traducao/traducao.service";
+import { AnimationService } from "../../services/animacoes/animacoes.service";
 import { of, throwError } from "rxjs";
+import { Frase } from "../../interfaces/frases.interface";
+
+const createMock = <T>() => {
+  return {} as jest.Mocked<T>;
+};
 
 describe('FrasesComponent', () => {
   let component: FrasesComponent;
   let fixture: ComponentFixture<FrasesComponent>;
-  let frasesServiceSpy: any;
-  let traducaoServiceSpy: any;
-  let animationServiceSpy: any;
+  let frasesServiceSpy: jest.Mocked<FrasesService>;
+  let traducaoServiceSpy: jest.Mocked<TraducaoService>;
+  let animationServiceSpy: jest.Mocked<AnimationService>;
 
   beforeEach(async () => {
-    frasesServiceSpy = { obterFraseDoDia: jest.fn() };
-    traducaoServiceSpy = { translate: jest.fn() };
-    animationServiceSpy = { aplicarFadeIn: jest.fn() };
+    frasesServiceSpy = createMock<FrasesService>();
+    frasesServiceSpy.obterFraseDoDia = jest.fn();
+
+    traducaoServiceSpy = createMock<TraducaoService>();
+    traducaoServiceSpy.translate = jest.fn();
+
+    animationServiceSpy = createMock<AnimationService>();
+    animationServiceSpy.aplicarFadeIn = jest.fn();
 
     await TestBed.configureTestingModule({
       imports: [FrasesComponent, HttpClientTestingModule],
@@ -51,10 +61,15 @@ describe('FrasesComponent', () => {
   });
 
   it('deve obter uma frase do dia com sucesso e aplicar fade-in', fakeAsync(() => {
-    const mockFrase = [{ q: 'Frase de teste', a: 'Autor Teste' }];
+    const mockFrase: Frase[] = [{ q: 'Frase de teste', a: 'Autor Teste', h: 'Dica do dia' }];
     frasesServiceSpy.obterFraseDoDia.mockReturnValue(of(mockFrase));
 
-    traducaoServiceSpy.translate.mockReturnValue(of({ responseData: { translatedText: 'Test Quote' } }));
+    traducaoServiceSpy.translate.mockReturnValue(
+      of({
+        responseData: { translatedText: 'Test Quote', match: 100 },
+        responseStatus: 200
+      })
+    );
 
     component.gerarFraseDoDia();
     tick();
@@ -66,25 +81,30 @@ describe('FrasesComponent', () => {
   }));
 
   it('deve traduzir uma frase quando o idioma selecionado é inglês', fakeAsync(() => {
-    component.idiomaSelecionado = 'en'; // Define o idioma como inglês
+    component.idiomaSelecionado = 'en';
     const mockFrase = 'Test Quote';
 
-    component.traduzirFrase(mockFrase); // Chama o método
+    component.traduzirFrase(mockFrase);
 
-    expect(component.fraseTraduzida).toBe(mockFrase); // Verifica se a frase traduzida é igual à original
-    expect(component.isLoading).toBe(false); // Verifica se isLoading é false
+    expect(component.fraseTraduzida).toBe(mockFrase);
+    expect(component.isLoading).toBe(false);
   }));
 
   it('deve traduzir uma frase corretamente quando o idioma selecionado não é inglês', fakeAsync(() => {
-    component.idiomaSelecionado = 'pt'; // Define o idioma como português
+    component.idiomaSelecionado = 'pt';
     const mockFrase = 'Frase de teste';
-    traducaoServiceSpy.translate.mockReturnValue(of({ responseData: { translatedText: 'Test Quote' } }));
+    traducaoServiceSpy.translate.mockReturnValue(
+      of({
+        responseData: { translatedText: 'Test Quote' , match: 100 },
+        responseStatus: 200
+      }))
+    ;
 
-    component.traduzirFrase(mockFrase); // Chama o método
-    tick(); // Avança o tempo para processar a chamada assíncrona
+    component.traduzirFrase(mockFrase);
+    tick();
 
-    expect(component.fraseTraduzida).toBe('Test Quote'); // Verifica se a frase foi traduzida corretamente
-    expect(component.isLoading).toBe(false); // Verifica se isLoading é false
+    expect(component.fraseTraduzida).toBe('Test Quote');
+    expect(component.isLoading).toBe(false);
   }));
 
   it('deve trata um erro ao obter a frase do dia', () => {

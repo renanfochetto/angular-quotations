@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { FotoService } from './foto.service';
 import { HttpErrorResponse } from "@angular/common/http";
-import { environment } from "../../environment/environment";
+import { environment } from "../../../environment/environment";
 
 describe('FotoService', () => {
   let service: FotoService;

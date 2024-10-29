@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { TraducaoService } from './traducao.service';
-import { Traducao } from "../interfaces/traducao.interface";
+import { Traducao } from "../../interfaces/traducao.interface";
 
 describe('TraducaoService', () => {
   let service: TraducaoService;

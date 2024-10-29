@@ -54,15 +54,15 @@
 }
 
 .lang-option {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
   font-weight: 600;
   color: black;
   margin: 0 5px;
 }
 
 .lang-option.active {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   text-shadow: -1px -1px 0px #ffffff, 1px -1px 0px #ffffff, -1px 1px 0px #ffffff, 1px 1px 0px #ffffff;
 }

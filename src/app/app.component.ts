@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
-import { FotoService } from "./services/foto.service";
+import { FotoService } from "./services/foto/foto.service";
 import { FrasesComponent } from "./components/frases/frases.component";
 
 

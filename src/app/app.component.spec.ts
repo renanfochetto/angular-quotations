@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { FotoService } from "./services/foto.service";
+import { FotoService } from "./services/foto/foto.service";
 import { of, throwError } from "rxjs";
 import { expect } from '@jest/globals';
 

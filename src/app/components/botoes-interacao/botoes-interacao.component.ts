@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -13,6 +13,7 @@ export class BotoesInteracaoComponent {
   @Input() curtido: boolean = false;
   @Input() copiado: boolean = false;
   @Input() fraseTraduzida: string = '';
+
   @Output() curtir: EventEmitter<void> = new EventEmitter<void>();
   @Output() copiar: EventEmitter<void>  = new EventEmitter<void>();
   @Output() compartilhar: EventEmitter<void> = new EventEmitter<void>();

@@ -5,9 +5,9 @@ import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { BotoesInteracaoComponent } from "../botoes-interacao/botoes-interacao.component";
 import { LoadingComponent } from "../loading/loading.component";
-import { FrasesService } from "../../services/frases.service";
-import { TraducaoService } from "../../services/traducao.service";
-import { AnimationService } from "../../services/animacoes.service";
+import { FrasesService } from "../../services/frases/frases.service";
+import { TraducaoService } from "../../services/traducao/traducao.service";
+import { AnimationService } from "../../services/animacoes/animacoes.service";
 import { Frase } from "../../interfaces/frases.interface";
 import { Traducao } from "../../interfaces/traducao.interface";
 
@@ -57,24 +57,24 @@ export class FrasesComponent {
         this.aplicarFadeIn()
         this.traduzirFrase(this.fraseDoDia);
       },
-      error: (error: any): void => {
+      error: (error: unknown): void => {
         console.error('Não conseguimos obter a frase do dia. Que tal tentar novamente mais tarde?', error);
       }
     });
   }
 
   traduzirFrase(texto: string): void {
-    this.isLoading = true
+    this.isLoading = true;
     if(this.idiomaSelecionado === 'en') {
       this.fraseTraduzida = texto;
-      this.isLoading = false
+      this.isLoading = false;
     } else {
       this.traducaoService.translate(texto,'en', 'pt').subscribe({
         next: (data: Traducao): void => {
           this.fraseTraduzida = data.responseData.translatedText;
           this.isLoading = false;
       },
-        error: (error: any): void => {
+        error: (error: unknown): void => {
           console.error('Não conseguimos traduzir a frase. Que tal tentar novamente mais tarde?', error);
           this.isLoading = false;
       }
@@ -84,6 +84,7 @@ export class FrasesComponent {
 
   aplicarFadeIn(): void {
     const fraseElement = document.querySelector('.frase') as HTMLElement;
+
     this.animacaoService.aplicarFadeIn(fraseElement);
   }
 }

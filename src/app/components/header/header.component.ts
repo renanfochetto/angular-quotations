@@ -9,6 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
   @Output() idiomaMudou: EventEmitter<'pt' | 'en'> = new EventEmitter<'pt' | 'en'>();
+
   idiomaSelecionado: 'pt' | 'en' = 'pt';
 
   atualizarIdioma(): void {
