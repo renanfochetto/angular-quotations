@@ -15,7 +15,7 @@ export class FotoService {
   ) { }
 
   getFoto(): Observable<any> {
-    return this.http.get(`${this.apiUrl}&client_id=${environment.unplashChave}`).pipe(
+    return this.http.get(`${this.apiUrl}&client_id=${environment.unsplashChave}`).pipe(
       catchError(this.handleError)
     );
   }
