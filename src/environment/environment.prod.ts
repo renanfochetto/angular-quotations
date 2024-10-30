@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://angular-visual-quotes.vercel.app/api/frases'
+  apiUrl: 'https://visual-quotes-five.vercel.app/api/frases'
 };
