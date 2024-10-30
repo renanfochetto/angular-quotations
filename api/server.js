@@ -6,7 +6,6 @@ dotenv.config({ path: '../unsplash.env' });
 export default async function handler(req, res) {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Origin', 'GET');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   const { method } = req;
@@ -17,6 +16,7 @@ export default async function handler(req, res) {
       const data = await response.json();
       res.status(response.status).json(data);
     } catch (error) {
+      console.log('Erro ao buscar a frase');
       res.status(500).json( { error: 'Error ao buscar a frase' } );
     }
   } else if (method === 'GET' && req.url === '/api/imagem') {
