@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     const data = await response.json();
     console.log("Dados recebidos:", data);
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://angular-visual-quotes.vercel.app/');
     res.setHeader('Content-Type', 'application/json');
 
     res.status(200).json(data);
