@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FrasesService {
-  private apiUrl = 'https://zenquotes.io/random'
+  private apiUrl = '/api/frases'
   constructor(private http: HttpClient) { }
 
   obterFraseDoDia(): Observable<any> {
