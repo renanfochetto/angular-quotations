@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Frase } from "../../interfaces/frases.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FrasesService {
-  private apiUrl = '/api/frases'
+  private apiUrl: string = 'http://localhost:3000/api/frases';
+
   constructor(private http: HttpClient) { }
 
-  obterFraseDoDia(): Observable<any> {
+  obterFraseDoDia(): Observable<Frase[]> {
     console.log("Chamando API:", this.apiUrl);
-    return this.http.get<any>(this.apiUrl).pipe(
+    return this.http.get<Frase[]>(this.apiUrl).pipe(
       catchError(this.handleError)
     );
   }

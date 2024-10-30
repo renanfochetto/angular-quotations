@@ -52,10 +52,14 @@ export class FrasesComponent {
   gerarFraseDoDia(): void {
     this.frasesService.obterFraseDoDia().subscribe({
       next: (data: Frase[]): void => {
-        this.fraseDoDia = data[0].q;
-        this.autor = data[0].a;
-        this.aplicarFadeIn()
-        this.traduzirFrase(this.fraseDoDia);
+        if(data.length > 0) {
+          this.fraseDoDia = data[0].q;
+          this.autor = data[0].a;
+          this.aplicarFadeIn();
+          this.traduzirFrase(this.fraseDoDia);
+        } else {
+          console.error('Não conseguimos obter a frase do dia. Que tal tentar novamente mais tarde?');
+        }
       },
       error: (error: unknown): void => {
         console.error('Não conseguimos obter a frase do dia. Que tal tentar novamente mais tarde?', error);
