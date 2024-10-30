@@ -11,6 +11,7 @@ import { FrasesComponent } from "./components/frases/frases.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent implements OnInit {
   title: string = 'Visual Quotes';
 
@@ -23,7 +24,6 @@ export class AppComponent implements OnInit {
   private definirImagemFundo(): void {
     this.fotoService.getFoto().subscribe({
       next: (photo) => {
-        console.log('Imagem obtida:', photo);
         document.body.style.backgroundImage = `url(${photo.urls.regular})`;
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundPosition = 'center';

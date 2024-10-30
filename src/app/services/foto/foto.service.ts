@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { environment } from "../../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FotoService {
-  private apiUrl: string = 'http://localhost:3000/api/imagem';
+  private apiUrl: string = environment.fotoApiUrl;
 
   constructor(
     private http: HttpClient
