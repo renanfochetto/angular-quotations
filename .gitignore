@@ -25,7 +25,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-/assets/config.json
+/src/assets/config.json
 
 # System files
 .DS_Store
