@@ -58,7 +58,6 @@ cypress/screenshots
 # Angular specific
 .angular/
 angular.json
-/src/environment/
 src/**/*.js
 src/**/*.js.map
 
