@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { FotoService } from "./services/foto/foto.service";
 import { FrasesComponent } from "./components/frases/frases.component";
+import { ConfigService } from "./services/config/config.service";
 
 
 @Component({
@@ -15,10 +16,25 @@ import { FrasesComponent } from "./components/frases/frases.component";
 export class AppComponent implements OnInit {
   title: string = 'Visual Quotes';
 
-  constructor(private fotoService: FotoService) {}
+  constructor(
+    private fotoService: FotoService,
+    private configService: ConfigService
+  ) {}
 
   ngOnInit(): void {
-    this.definirImagemFundo();
+    this.carregarConfiguracao();
+  }
+
+  private carregarConfiguracao():void {
+    this.configService.loadConfig().subscribe({
+      next: (config) => {
+        this.configService.setConfig(config);
+        this.definirImagemFundo();
+      },
+      error: (error) => {
+        console.error('Erro ao carregar a configuração', error);
+      }
+    })
   }
 
   private definirImagemFundo(): void {

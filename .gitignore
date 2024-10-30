@@ -20,16 +20,16 @@ yarn-error.log
 
 # Miscellaneous
 .sass-cache/
-/connect.lock
-/coverage
+.connect.lock
+.coverage
 /libpeerconnection.log
 testem.log
 /typings
+/assets/config.json
 
 # System files
 .DS_Store
 Thumbs.db
-
 
 # Environment variables
 .env

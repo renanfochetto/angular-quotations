@@ -7,10 +7,12 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FrasesService {
+  private apiUrl = 'https://zenquotes.io/random'
   constructor(private http: HttpClient) { }
 
   obterFraseDoDia(): Observable<any> {
-    return this.http.get<any>('/api/random').pipe(
+    console.log("Chamando API:", this.apiUrl);
+    return this.http.get<any>(this.apiUrl).pipe(
       catchError(this.handleError)
     );
   }
