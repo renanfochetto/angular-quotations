@@ -3,8 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { FotoService } from "./services/foto/foto.service";
 import { FrasesComponent } from "./components/frases/frases.component";
-import { ConfigService } from "./services/config/config.service";
-
 
 @Component({
   selector: 'app-root',
@@ -16,30 +14,16 @@ import { ConfigService } from "./services/config/config.service";
 export class AppComponent implements OnInit {
   title: string = 'Visual Quotes';
 
-  constructor(
-    private fotoService: FotoService,
-    private configService: ConfigService
-  ) {}
+  constructor(private fotoService: FotoService) {}
 
   ngOnInit(): void {
-    this.carregarConfiguracao();
-  }
-
-  private carregarConfiguracao():void {
-    this.configService.loadConfig().subscribe({
-      next: (config) => {
-        this.configService.setConfig(config);
-        this.definirImagemFundo();
-      },
-      error: (error) => {
-        console.error('Erro ao carregar a configuração', error);
-      }
-    })
+    this.definirImagemFundo();
   }
 
   private definirImagemFundo(): void {
     this.fotoService.getFoto().subscribe({
       next: (photo) => {
+        console.log('Imagem obtida:', photo);
         document.body.style.backgroundImage = `url(${photo.urls.regular})`;
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundPosition = 'center';

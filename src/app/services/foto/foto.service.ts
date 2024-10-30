@@ -2,22 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { ConfigService } from "../config/config.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FotoService {
-  private apiUrl: string = 'https://api.unsplash.com/photos/random?query=landscape';
+  private apiUrl: string = 'http://localhost:3000/api/imagem';
 
   constructor(
-    private http: HttpClient,
-    private configService: ConfigService
+    private http: HttpClient
   ) { }
 
   getFoto(): Observable<any> {
-    const clientId = this.configService.unsplashChave;
-    return this.http.get(`${this.apiUrl}&client_id=${clientId}`).pipe(
+    return this.http.get(this.apiUrl).pipe(
       catchError(this.handleError)
     );
   }
