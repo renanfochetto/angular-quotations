@@ -1,0 +1,6 @@
+{
+  "routes": [
+    { "src": "/api/frases", "dest": "/api/zenQuotes.js" },
+    { "src": "/api/imagem", "dest": "/api/unsplashImage.js" }
+  ]
+}

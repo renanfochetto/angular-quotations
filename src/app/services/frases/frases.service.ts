@@ -13,9 +13,9 @@ export class FrasesService {
 
   constructor(private http: HttpClient) { }
 
-  obterFraseDoDia(): Observable<Frase[]> {
+  obterFraseDoDia(): Observable<Frase> {
     console.log("Chamando API:", this.apiUrl);
-    return this.http.get<Frase[]>(this.apiUrl).pipe(
+    return this.http.get<Frase>(this.apiUrl).pipe(
       catchError(this.handleError)
     );
   }

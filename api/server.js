@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   console.log('Método:', method);
   console.log('URL:', url);
 
-  if (method === 'GET' && url === 'https://visual-quotes-five.vercel.app/api/frases') {
+  if (method === 'GET' && url === '/api/frases') {
     console.log('Entrou no bloco: frases');
     try {
       console.log('Buscando frase da API externa...');

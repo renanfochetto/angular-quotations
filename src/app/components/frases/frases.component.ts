@@ -51,10 +51,10 @@ export class FrasesComponent {
 
   gerarFraseDoDia(): void {
     this.frasesService.obterFraseDoDia().subscribe({
-      next: (data: Frase[]): void => {
-        if(data.length > 0) {
-          this.fraseDoDia = data[0].q;
-          this.autor = data[0].a;
+      next: (data: Frase): void => {
+        if(data) {
+          this.fraseDoDia = data.q;
+          this.autor = data.a;
           this.aplicarFadeIn();
           this.traduzirFrase(this.fraseDoDia);
         } else {
