@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   console.log('Método:', method);
   console.log('URL:', url);
 
-  if (method === 'GET' && url === '/api/frases') {
+  if (method === 'GET' && url === 'https://visual-quotes-five.vercel.app/api/frases') {
     console.log('Entrou no bloco: frases');
     try {
       console.log('Buscando frase da API externa...');
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       console.log('Erro ao buscar a frase');
       res.status(500).json( { error: 'Error ao buscar a frase' } );
     }
-  } else if (method === 'GET' && req.url === '/api/imagem') {
+  } else if (method === 'GET' && req.url === 'https://visual-quotes-five.vercel.app/api/imagem') {
     console.log('Entrou no bloco: imagem');
     const accessKey = process.env.UNSPLASH_ACCESS_KEY;
     try {
