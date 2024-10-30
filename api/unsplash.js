@@ -2,6 +2,8 @@ import fetch from "node-fetch";
 import dotenv from "dotenv";
 
 dotenv.config({ path: '../unsplash.env' } );
+console.log('Variáveis de ambiente:', process.env);
+
 
 export default async function handler(req, res) {
   try {
