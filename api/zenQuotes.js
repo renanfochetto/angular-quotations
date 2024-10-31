@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
+  console.log('Chamando API do ZenQuotes...');
   try{
   const response = await fetch ('https://zenquotes.io/api/random', { method: 'GET'});
   const data = await response.json();
