@@ -14,24 +14,3 @@
   font-size: 1.1rem;
   color: black;
 }
-
-@media (max-width: 699px) {
-  .container-erro img {
-    width: 1.6rem;
-  }
-
-  .container-erro p {
-    font-size: 0.8rem;
-  }
-}
-
-
-@media (max-width: 1024px) and (orientation: landscape) {
-  .container-erro img {
-    width: 1.5rem;
-  }
-
-  .container-erro p {
-   font-size: 0.7rem;
- }
-}
