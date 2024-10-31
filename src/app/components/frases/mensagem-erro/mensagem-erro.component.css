@@ -1,0 +1,16 @@
+.container-erro {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container-erro img {
+  width: 2rem;
+}
+
+.container-erro p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: black;
+}

@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './autor.component.html',
   styleUrl: './autor.component.css'
 })
+
 export class AutorComponent {
   @Input() nomeAutor: string = '';
   @Input() linkFoto: string = '';

@@ -17,11 +17,9 @@
 }
 
 @media (max-width: 480px) {
-
   .botoes button {
     font-size: 0.9rem;
   }
-
 }
 
 @media (min-width: 320px) and (max-width: 699px) and (orientation: landscape) {
