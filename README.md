@@ -14,6 +14,7 @@ Este aplicativo combina frases motivacionais com imagens incríveis para ilumina
 
 - **ZenQuotes**: [zenquotes.io](https://zenquotes.io) - API para obter frases motivacionais aleatórias.
 - **Unsplash**: [unsplash.com](https://unsplash.com) - API para acessar imagens de alta qualidade.
+- **MyMemory**: [mymemory.translated.net](https://mymemory.translated.net) - API para traduções.
 
 ## Contribuição 🤝
 Contribuições são bem-vindas! Se você tiver sugestões, sinta-se à vontade para abrir uma issue ou enviar um pull request.

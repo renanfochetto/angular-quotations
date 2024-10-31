@@ -2,15 +2,16 @@
   <app-header (idiomaMudou)="atualizarIdioma($event)"></app-header>
   <section class="container" role="main">
     <div class="frase-container" aria-live="polite">
-      <div *ngIf="!isLoading && !fraseTraduzida" id="titulo" class="titulo fade-in" aria-labelledby="titulo">{{ titulo }}</div>
+      <div *ngIf="!isLoading && !fraseTraduzida && !erro" id="titulo" class="titulo fade-in" aria-labelledby="titulo">{{ titulo }}</div>
       <app-loading *ngIf="isLoading"></app-loading>
-      <div *ngIf="fraseTraduzida && !isLoading" class="frase fade-in" aria-describedby="autor">"{{ fraseTraduzida }}"</div>
-      <div *ngIf="fraseTraduzida && !isLoading" class="container-botoes">
+      <div *ngIf="fraseTraduzida && !isLoading && !erro" class="frase fade-in" aria-describedby="autor">"{{ fraseTraduzida }}"</div>
+      <app-mensagem-erro *ngIf="erro && !isLoading" [mensagemErro]="fraseErro" class="fade-in" role="alert"></app-mensagem-erro>
+      <div *ngIf="fraseTraduzida && !isLoading && !erro" class="container-botoes">
         <app-botoes-interacao [curtido]="foiCurtido" [copiado]="copiado" [fraseTraduzida]="fraseTraduzida"></app-botoes-interacao>
-        <div class="autor fade-in" id="autor">{{ autor }}</div>
+        <div class="autor fade-in" id="autor" role="contentinfo">{{ autor }}</div>
       </div>
     </div>
-    <button (click)="gerarFraseDoDia()" class="botao-frase" role="button" aria-label="Gerar frase do dia">{{ botaoTexto }}</button>
+    <button (click)="gerarFraseDoDia()" class="botao-frase" type="button" aria-label="Gerar frase do dia">{{ botaoTexto }}</button>
   </section>
   <app-autor [nomeAutor]="nomeAutor" [linkFoto]="linkFoto" [descricaoAutor]="descricaoAutor"></app-autor>
   <app-footer></app-footer>

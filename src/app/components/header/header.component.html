@@ -3,12 +3,12 @@
     <a href="/" aria-label="Ir para a página inicial">Visual Quotes</a>
   </h1>
   <div class="seletor-container" role="group" aria-label="Selecionar Idioma">
-    <span class="lang-option" [class.active]="idiomaSelecionado === 'pt'">PT</span>
+    <span class="lang-option" [class.active]="idiomaSelecionado === 'pt'" tabindex="0" aria-label="Selecionar Português">PT</span>
     <label class="toggle-button" for="idioma-toggle">
       <input id="idioma-toggle" type="checkbox" (change)="atualizarIdioma()" [checked]="idiomaSelecionado === 'en'">
       <span class="slider"></span>
       <span class="visually-hidden">Alterar idioma para {{ idiomaSelecionado === 'pt' ? 'Português' : 'Inglês' }}</span>
     </label>
-    <span class="lang-option" [class.active]="idiomaSelecionado === 'en'">EN</span>
+    <span class="lang-option" [class.active]="idiomaSelecionado === 'en'" tabindex="0" aria-label="Selecionar Inglês">EN</span>
   </div>
 </header>

@@ -3,13 +3,13 @@
   justify-content: flex-start;
   align-items: center;
   gap: 0.8rem;
-  cursor: pointer;
 }
 
 .botoes button {
   background: none;
   border: none;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .botoes button:active {
@@ -17,11 +17,9 @@
 }
 
 @media (max-width: 480px) {
-
   .botoes button {
     font-size: 0.9rem;
   }
-
 }
 
 @media (min-width: 320px) and (max-width: 699px) and (orientation: landscape) {

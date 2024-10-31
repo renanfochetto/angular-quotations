@@ -1,11 +1,11 @@
 <div class="botoes" role="toolbar" aria-label="Ações">
-  <button aria-label="Curtir" (click)="alternarCurtir()">
+  <button aria-label="Curtir" (click)="alternarCurtir()" type="button">
     <i [class]="curtido ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" aria-hidden="true"></i>
   </button>
-  <button aria-label="Copiar Frase" (click)="copiarFrase()">
+  <button aria-label="Copiar Frase" (click)="copiarFrase()" type="button">
     <i [class]="copiado ? 'fa-solid fa-check' : 'fa-solid fa-copy'" aria-hidden="true"></i>
   </button>
-  <button aria-label="Compartilhar" (click)="compartilharFrase()">
+  <button aria-label="Compartilhar" (click)="compartilharFrase()" type="button">
     <i class="fa-solid fa-share" aria-hidden="true"></i>
   </button>
 </div>
