@@ -24,5 +24,13 @@
 
 }
 
+@media (min-width: 320px) and (max-width: 699px) and (orientation: landscape) {
+  .botoes button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+  }
+}
+
 
 

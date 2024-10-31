@@ -1,0 +1,22 @@
+.autor-info {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  bottom: 4.2rem;
+  right: 1.5rem;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: black;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.autor-info a {
+  font-family: 'Bison', sans-serif;
+  color: black;
+  font-size: 1.1rem;
+  letter-spacing: 0.05rem;
+  padding: 0;
+  text-decoration: none;
+  text-shadow: -1px -1px 0px #ffffff, 1px -1px 0px #ffffff, -1px 1px 0px #ffffff, 1px 1px 0px #ffffff;
+}

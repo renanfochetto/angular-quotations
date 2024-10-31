@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { environment } from "../../../environment/environment";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class FotoService {
   ) { }
 
   getFoto(): Observable<any> {
+    console.log("Chamando API de fotos:", this.apiUrl);
     return this.http.get(this.apiUrl).pipe(
       catchError(this.handleError)
     );

@@ -12,5 +12,6 @@
     </div>
     <button (click)="gerarFraseDoDia()" class="botao-frase" role="button" aria-label="Gerar frase do dia">{{ botaoTexto }}</button>
   </section>
+  <app-autor [nomeAutor]="nomeAutor" [linkFoto]="linkFoto" [descricaoAutor]="descricaoAutor"></app-autor>
   <app-footer></app-footer>
 </div>

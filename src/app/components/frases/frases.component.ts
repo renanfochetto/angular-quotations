@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { HeaderComponent } from "../header/header.component";
@@ -10,6 +10,7 @@ import { TraducaoService } from "../../services/traducao/traducao.service";
 import { AnimationService } from "../../services/animacoes/animacoes.service";
 import { Frase } from "../../interfaces/frases.interface";
 import { Traducao } from "../../interfaces/traducao.interface";
+import {AutorComponent} from "../autor/autor.component";
 
 @Component({
   selector: 'app-frases',
@@ -20,13 +21,17 @@ import { Traducao } from "../../interfaces/traducao.interface";
     HeaderComponent,
     FooterComponent,
     BotoesInteracaoComponent,
-    LoadingComponent
+    LoadingComponent,
+    AutorComponent
   ],
   templateUrl: './frases.component.html',
   styleUrl: './frases.component.css'
 })
 
 export class FrasesComponent {
+  @Input() nomeAutor: string = 'Simon Berger';
+  @Input() linkFoto: string = 'https://unsplash.com/pt-br/fotografias/fotografia-de-paisagem-de-montanhas-twukN12EN7c';
+  @Input() descricaoAutor: string = 'Foto de ';
   idiomaSelecionado: string = 'pt';
   fraseDoDia: string = '';
   autor: string = '';
@@ -47,9 +52,11 @@ export class FrasesComponent {
     this.idiomaSelecionado = novoIdioma;
     this.titulo = novoIdioma === 'pt' ? 'Que tal uma citação para o dia de hoje?' : 'How about a quote for today?';
     this.botaoTexto = novoIdioma === 'pt' ? 'Gerar Citação' : 'Generate Quote';
+    this.descricaoAutor = novoIdioma === 'pt' ? 'Foto de ' : 'Photo by ';
   }
 
   gerarFraseDoDia(): void {
+    console.log("Chamando a função gerarFraseDoDia");
     this.frasesService.obterFraseDoDia().subscribe({
       next: (data: Frase[]): void => {
         if(data) {
