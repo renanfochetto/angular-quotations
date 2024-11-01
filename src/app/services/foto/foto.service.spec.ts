@@ -1,12 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { FotoService } from './foto.service';
-import { HttpErrorResponse } from "@angular/common/http";
-import { environment } from "../../../environments/environment";
 
 describe('FotoService', () => {
   let service: FotoService;
   let httpMock: HttpTestingController;
+  const apiUrl = `https://api.unsplash.com/photos/random?query=landscape&client_id=${UNSPLASH_ACCESS_KEY}`;
 
   const mockPhotoResponse = {
     urls: {
@@ -31,12 +30,12 @@ describe('FotoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('deve retornar uma foto', () => {
+  it('deve retornar uma foto', async () => {
     service.getFoto().subscribe((photo) => {
       expect(photo).toEqual(mockPhotoResponse);
     });
 
-    const req = httpMock.expectOne('https://api.unsplash.com/photos/random?query=landscape&client_id=' + environment.unplashChave);
+    const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('GET');
     req.flush(mockPhotoResponse);
   });
@@ -51,7 +50,7 @@ describe('FotoService', () => {
       }
     });
 
-    const req = httpMock.expectOne('https://api.unsplash.com/photos/random?query=landscape&client_id=' + environment.unplashChave);
+    const req = httpMock.expectOne(apiUrl);
     expect(req.request.method).toBe('GET');
     req.flush(null, { status: 500, statusText: 'Internal Server Error' });
 
